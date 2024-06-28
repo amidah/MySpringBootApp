@@ -4,19 +4,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the Project with maven Compile'
+                echo 'Building the Project with maven'
+                bat "mvn clean install -DskipTests"
             }
         }
         
         stage('Test') {
             steps {
-                echo 'Testing the Project with maven Test'
-            }
-        }
-      
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the Project with maven package'
+                echo 'Testing the Project with maven'
+                bat "mvn test"
             }
         }
     }
